@@ -66,19 +66,20 @@ public class ProductController {
 
 	
 	public static Boolean updateProductHarga(String nama, int harga, int stok) {
-		String query = "UPDATE Products SET Harga = ? WHERE Nama = ?";
-		try {
-			PreparedStatement stmt = db.connection.prepareStatement(query);
-			stmt.setInt(1, harga);
-			stmt.setInt(2, stok);
-			stmt.setString(3, nama);
-			int rowAffected = stmt.executeUpdate();
-			return rowAffected > 0;
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return false;
+	    String query = "UPDATE Products SET Harga = ?, Stok = ? WHERE Nama = ?";
+	    try {
+	        PreparedStatement stmt = db.connection.prepareStatement(query);
+	        stmt.setInt(1, harga);
+	        stmt.setInt(2, stok);
+	        stmt.setString(3, nama);
+	        int rowAffected = stmt.executeUpdate();
+	        return rowAffected > 0;
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	    return false;
 	}
+
 	
 	public static Boolean DeleteProduct(String nama) {
 		String query = "DELETE FROM Products WHERE Nama = ?";

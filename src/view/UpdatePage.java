@@ -4,6 +4,7 @@ import java.util.List;
 
 import controller.ProductController;
 import javafx.collections.FXCollections;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -19,7 +20,7 @@ public class UpdatePage {
 	private Scene scene;
 	private BorderPane borderPane;
 	private GridPane gridPane;
-	private Label namaLabel, hargaLabel, stokLabel;
+	private Label footerLabel, namaLabel, hargaLabel, stokLabel;
 	private TextField harga, stok;
 	private Button updateButton;
 	private ComboBox<String> namaComboBox;
@@ -28,13 +29,14 @@ public class UpdatePage {
 		this.stage = stage;
 		init();
 		setLayout();
-		scene = new Scene(borderPane, 400, 400);
+		scene = new Scene(borderPane, 500, 250);
 	}
 	
 
 	private void init() {
 		borderPane = new BorderPane();
 		gridPane = new GridPane();
+		footerLabel = new Label("Update Page");
 		namaLabel = new Label("Nama");
 		hargaLabel = new Label("Harga");    
 		stokLabel = new Label("Stok");
@@ -59,14 +61,35 @@ public class UpdatePage {
 	}
 	
 	private void setLayout() {
-		gridPane.add(namaLabel, 0, 0);
-		gridPane.add(namaComboBox, 1, 0);
-		gridPane.add(hargaLabel, 0, 1);
-		gridPane.add(harga, 1, 1);
-		gridPane.add(stokLabel, 0, 2);
-		gridPane.add(stok, 1, 2);
-		gridPane.add(updateButton, 0, 4);
+		gridPane.add(footerLabel, 0, 0);
+		gridPane.add(namaLabel, 0, 1);
+		gridPane.add(namaComboBox, 1, 1);
+		gridPane.add(hargaLabel, 0, 2);
+		gridPane.add(harga, 1, 2);
+		gridPane.add(stokLabel, 0, 3);
+		gridPane.add(stok, 1, 3);
+		gridPane.add(updateButton, 0, 6);
+
+		harga.setStyle("-fx-background-color: #E5E5E5;");
+		stok.setStyle("-fx-background-color: #E5E5E5;");
+		
+		namaLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+		hargaLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+		stokLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+
+		harga.setPromptText("Masukkan harga produk");
+		stok.setPromptText("Masukkan stok produk");
+		
+		borderPane.setStyle("-fx-background-color: #A5A7B6;");
+		footerLabel.setStyle("-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #333333;");
+		updateButton.setStyle("-fx-background-color: #ffd966; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 10px 20px;");
+		
 		borderPane.setCenter(gridPane);
+		
+		gridPane.setAlignment(Pos.TOP_CENTER);
+		
+		gridPane.setHgap(20);
+		gridPane.setVgap(10);
 	}
 	
 	public Scene getScene() {
